@@ -51,13 +51,7 @@ class Meta(nn.Module):
        
         self.net = model_class.from_pretrained(args.model_name_or_path)  
         # load WQ pretrained model
-        # self.net.load_state_dict(torch.load('./param_bart_base_best.pt')) 
-
-        # load PQ pretrained model
-        self.net.load_state_dict(torch.load('./param_bart_PQ20_best_base.pt')) 
-
-        #load QA pretrained model
-        # self.net.load_state_dict(torch.load('./param_bart_WQ_best_qa_ch.pt')) 
+        self.net.load_state_dict(torch.load('./param_bart_base_best.pt')) 
 
         self.net = torch.nn.DataParallel(self.net, device_ids = [0, 1, 2])
         self.net = self.net.to(self.device)  
