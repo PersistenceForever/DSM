@@ -32,7 +32,7 @@ def main():
     db_test = DataLoader(data_test, 1, shuffle=False, num_workers=16, pin_memory=True, collate_fn = collate)
     
     print("start!!!!")
-    for epoch in range(args.epoch//10000):
+    for epoch in range(args.epoch):
         for step, (x_spt,x_qry, query_index) in enumerate(db):
             x_spt, x_qry, query_index = x_spt.to(device), x_qry.to(device), query_index.to(device)
             bleu_1, bleu_2, bleu_3, bleu_4, rouge_l = maml(x_spt, x_qry, query_index)
