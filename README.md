@@ -20,13 +20,10 @@ Running the code
 ====
 (1) Create a folder to store results.
 ```
-$ mkdir save
+$ mkdir output_WQ
 ```
 
 (2) To run the example, execute:
 ```
-$ sh run_pubmed.sh python bart_train_f2.py --epoch 30 --input_dir dataset/PQ --output_dir './output_PQ_base_new' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path './bart-base'
+$ python bart_train.py --epoch 30 --input_dir dataset/WQ --output_dir './output_WQ' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path 'facebook/bart-base'
 ```
-
-Notes: the experimental results and optimal hyper-parameters could be somewhat different under different environments (e.g., different devices and different versions of PyTorch), you can use the suggested method introduced in our paper to choose the combination of hyper-parameters.
-
