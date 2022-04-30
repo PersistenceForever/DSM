@@ -16,7 +16,7 @@ $ conda install -c dglteam dgl-cuda11.1
 $ pip install -r requirements.txt
 ```
 
-Running the code
+How to run
 ====
 (1) Create a folder to store results.
 ```
