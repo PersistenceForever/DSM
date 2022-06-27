@@ -2,13 +2,12 @@
 The pytorch implementation of Question Generation over Knowledge Base via Modeling Diverse Subgraphs with Meta-learner.
 
 ## Requirements
-
 ### 1. Environments
-Create a virtual environment first via:
+* Create a virtual environment first via:
 ```
 $ conda activate -n your_env_name python 3.8.5 pip
 ```
-Install all the required tools using the following command:
+* Install all the required tools using the following command:
 ```
 $ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 $ pip install -r requirements.txt
