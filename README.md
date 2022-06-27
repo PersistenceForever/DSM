@@ -14,8 +14,8 @@ $ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=
 $ pip install -r requirements.txt
 ```
 ### 2. Dataset
-* WQ : see in `dataset/` ;
-* PQ : see in `dataset/` ; 
+* WQ : `dataset/` contains the files for WQ dataset. 
+* PQ : `dataset/` contains the files for WQ dataset. 
 
 ## How to run
 (1) process dataset Create a folder to store results.
