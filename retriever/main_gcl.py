@@ -41,7 +41,7 @@ def main():
     parser.add_argument('--epochs', type=int, default=100,
                         help='number of epochs to train (default: 100)')
     parser.add_argument('--num_layers', type=int, default=1,
-                        help='number of layers (default: 1)')
+                        help='number of layers (default: 2)')
     parser.add_argument('--num_mlp_layers', type=int, default=2,
                         help='number of layers for MLP EXCLUDING the input one (default: 2). 1 means linear model.')
     parser.add_argument('--hidden_dim', type=int, default=1024,
@@ -50,8 +50,6 @@ def main():
                         help='number of views (default: k + 1)')
     parser.add_argument('--batchsize', type=int, default=16,
                         help='size of batch (default: 16)')
-    parser.add_argument('--num_folds', type=int, default=10,
-                        help='number of folds (default: 10)')
     parser.add_argument('--lr', type=float, default=0.0001,
                         help='learning rate (default: 0.0001)')
     parser.add_argument('--final_dropout', type=float, default=0.5,
