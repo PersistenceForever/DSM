@@ -27,6 +27,18 @@ $ python retriever/preprocess_retriever.py
 ```
 $ python retriever/main_gcl.py
 ```
+```
+$ python retriever/main_dgi.py
+```
+```
+$ python retriever/main_rgcn.py
+```
+```
+$ python retriever/main_ged.py
+```
+```
+$ python retriever/relation_path.py
+```
 
 (3) Prepare dataset for DSM.
 ```
