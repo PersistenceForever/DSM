@@ -116,7 +116,7 @@ def main():
     for index in train_nodeSet:    
         trainSubGraphEmd.append(np.mean(emd[index], axis = 0))
 
-    np.save('./wholeSubgraphEmb/WQTrainSubGraph_CL_20_emb1024', np.array(trainSubGraphEmd))
+    np.save('./wholeSubgraphEmb/WQTrainSubGraph_DGI_emb1024', np.array(trainSubGraphEmd))
 
 if __name__ == '__main__':
     main()
