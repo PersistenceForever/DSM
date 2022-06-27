@@ -17,9 +17,8 @@ $ pip install -r requirements.txt
 * WQ : see in `dataset/` ;
 * PQ : see in `dataset/` ; 
 
-
 ## How to run
-(1) Create a folder to store results.
+(1) process dataset Create a folder to store results.
 ```
 $ mkdir output_WQ
 ```
