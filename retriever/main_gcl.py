@@ -62,16 +62,16 @@ def main():
 
     setup_seed(0)
     
-    # device = torch.device("cuda:" + str(args.device)) if torch.cuda.is_available() else torch.device("cpu")
-    device = torch.device("cpu")
+    device = torch.device("cuda:" + str(args.device)) if torch.cuda.is_available() else torch.device("cpu")
+ 
     # Data loading
     edge_index, feats, nb_nodes = load_data(args.dataset)
     input_dim = feats.shape[1]
     # the shuffled features are used to contruct the negative samples
     idx = np.random.permutation(nb_nodes)
     shuf_feats = feats[idx, :]   
-    model_pretrain = GCL(args.num_layers, args.num_mlp_layers, input_dim, args.hidden_dim, args.neighbor_pooling_type, device).to(device)   
-    optimizer_train = optim.Adam(model_pretrain.parameters(), lr=args.lr)  
+    model = GCL(args.num_layers, args.num_mlp_layers, input_dim, args.hidden_dim, args.neighbor_pooling_type, device).to(device)   
+    optimizer_train = optim.Adam(model.parameters(), lr=args.lr)  
 
     batch_size = 1
     lbl_1 = torch.ones(batch_size, nb_nodes)
@@ -90,28 +90,17 @@ def main():
     best_t = 1
     patience = 15
 
-    # calculate the test graph'sb node embedding
-    # adj = preprocess_neighbors_sumavepool(torch.LongTensor(edge_index), nb_nodes, device)
-    # model_pretrain.load_state_dict(torch.load('./best_qa_param_20_001.pt'))
-    # emb = model_pretrain.get_emb(feats, adj)
-    # np.save('./QA_Process/' + args.dataset +'_node1024.npy', emb)
-    # print("calculate success!")
-    # sys.exit(0)
-
     # training
-    model_pretrain.train()
+    model.train()
     for epoch in range(1, args.epochs + 1):
-        loss_pretrain = model_pretrain(feats, adj, train_nodeSet, pathDict, args.batchsize)               
+        loss_pretrain = model(feats, adj, train_nodeSet, pathDict, args.batchsize)               
         print("loss:", loss_pretrain.item())
-        with open('./trainLoss.txt', 'a+') as ft:
-            ft.write(str(loss_pretrain.item()))
-            ft.write('\n')
-      
+             
         if loss_pretrain.item() < best:
             best = loss_pretrain.item()
             best_t = epoch
             cnt_wait = 0
-            torch.save(model_pretrain.state_dict(), './best_WQ_param_1_0001.pt', _use_new_zipfile_serialization = False) 
+            torch.save(model.state_dict(), './best_WQ_param.pt', _use_new_zipfile_serialization = False) 
         else:
             cnt_wait +=1
         
@@ -125,11 +114,9 @@ def main():
             optimizer_train.step()
 
     #load model 
-    model_pretrain.load_state_dict(torch.load('./best_WQ_param_1_0001.pt')) 
-
-    emb = model_pretrain.get_emb(feats, adj)
-    np.save('./CLGraphData/' + args.dataset +'_node1024_1_16_0001.npy', emb)
-    # np.save('./wholeGraphData/' + args.dataset +'_node1024.npy', emb)
+    model.load_state_dict(torch.load('./best_WQ_param.pt')) 
+    emb = model.get_emb(feats, adj)
+    np.save('./CLGraphData/' + args.dataset +'_node1024.npy', emb)
     print('training done!')
 
 if __name__ == '__main__':
