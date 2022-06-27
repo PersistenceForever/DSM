@@ -9,9 +9,9 @@ import torch.utils.data as Data
 import numpy as np
 import sys
 
-class GCL(nn.Module):
+class RGCN_GCL(nn.Module):
     def __init__(self, num_layers, num_mlp_layers, input_dim, hidden_dim, neighbor_pooling_type, device):
-        super(GCL, self).__init__()
+        super(RGCN_GCL, self).__init__()
         self.rgcn = BaseRGCN(num_layers, num_mlp_layers, input_dim, hidden_dim, neighbor_pooling_type, device)
         self.criterion = ConLoss(device)       
 
