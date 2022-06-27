@@ -30,7 +30,7 @@ $ python retriever/main_gcl.py
 
 (3) Prepare dataset for DSM.
 ```
-$ python preprocess.py
+$ python preprocess.py -input_dir dataset/WQ --output_dir './output_WQ' --model_name_or_path 'facebook/bart-base'
 ```
 
 (4) To run the DSM, execute:
