@@ -3,6 +3,7 @@ The pytorch implementation of Question Generation over Knowledge Base via Modeli
 
 Requirements
 ====
+## Environments
 Create a virtual environment first via:
 ```
 $ conda activate -n your_env_name python 3.8.5 pip
@@ -13,6 +14,10 @@ $ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=
 
 $ pip install -r requirements.txt
 ```
+## Dataset
+* WQ : see in `dataset/` ;
+* PQ : see in `dataset/` ; 
+
 
 How to run
 ====
