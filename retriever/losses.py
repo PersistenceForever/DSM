@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
-class ContrastiveLoss(nn.Module):
+class ConLoss(nn.Module):
     def __init__(self, device, temperature=0.07, contrast_mode='all',
                  base_temperature=0.07):
-        super(ContrastiveLoss, self).__init__()
+        super(ConLoss, self).__init__()
         self.temperature = temperature
         self.contrast_mode = contrast_mode
         self.base_temperature = base_temperature
@@ -65,6 +65,5 @@ class ContrastiveLoss(nn.Module):
         
         # loss
         loss = - (self.temperature / self.base_temperature) * mean_log_prob_pos
-        loss = loss.view(anchor_count, batch_size).mean()
-        
+        loss = loss.view(anchor_count, batch_size).mean()        
         return loss
