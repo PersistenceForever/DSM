@@ -116,8 +116,15 @@ def main():
     #load model 
     model.load_state_dict(torch.load('./best_WQ_param.pt')) 
     emb = model.get_emb(feats, adj)
-    np.save('./CLGraphData/' + args.dataset +'_node1024.npy', emb)
     print('training done!')
 
+    # calculate subgraph embedding
+    train_nodeSet = np.load('./data/WQTrainGraphNodeSet.npy', allow_pickle=True)
+    trainSubGraphEmd = []
+    for index in train_nodeSet:    
+        trainSubGraphEmd.append(np.mean(emd[index], axis = 0))
+
+    np.save('./wholeSubgraphEmb/WQTrainSubGraph_CL_20_emb1024', np.array(trainSubGraphEmd))
+    
 if __name__ == '__main__':
     main()
