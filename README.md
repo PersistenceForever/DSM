@@ -18,34 +18,40 @@ $ pip install -r requirements.txt
 * PQ : `dataset/` contains the files for PQ dataset. 
 
 ## How to run 
-(1) Prepare dataset for training retriever.
+1. Prepare dataset for training retriever.
 ```
 $ python retriever/preprocess_retriever.py
 ```
 
-(2) Train the retriever to create learning tasks.
+2. Train the retriever to create learning tasks.
+
+* Run GCL-based retriever
 ```
-$ python retriever/main_gcl.py
+ $ python retriever/main_gcl.py
 ```
+* Run DGI-based retriever
 ```
-$ python retriever/main_dgi.py
+ $ python retriever/main_dgi.py
 ```
+* Run RGCN-based retriever
 ```
-$ python retriever/main_rgcn.py
+ $ python retriever/main_rgcn.py
 ```
+* Run GED retriever
 ```
 $ python retriever/main_ged.py
 ```
+* Run All-RP retriever
 ```
-$ python retriever/relation_path.py
+ $ python retriever/relation_path.py
 ```
 
-(3) Prepare dataset for DSM.
+3. Prepare dataset for DSM.
 ```
 $ python preprocess.py -input_dir dataset/WQ --output_dir './output_WQ' --model_name_or_path 'facebook/bart-base'
 ```
 
-(4) To run the DSM, execute:
+4. To run the DSM, execute:
 ```
 $ python bart_train.py --epoch 30 --input_dir dataset/WQ --output_dir './output_WQ' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path 'facebook/bart-base'
 ```
