@@ -50,3 +50,6 @@ $ python preprocess.py -input_dir dataset/WQ --output_dir './output_WQ' --model_
 ```
 $ python bart_train.py --epoch 30 --input_dir dataset/WQ --output_dir './output_WQ' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path 'facebook/bart-base'
 ```
+## QA performance
+We evaluate two classical KBQA models named [GRAFT-Net] (https://arxiv.org/abs/1809.00782) and [NSM] (He et al., 2021) on WebQSP
+
