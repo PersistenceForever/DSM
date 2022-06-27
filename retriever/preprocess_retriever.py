@@ -90,45 +90,6 @@ def process_feature(mode, input_dir):
     np.save('./data/WQTrainGraph_feature1024.npy', nodeEmbeddingList)
     print(len(nodeEmbeddingList))
  
-#give the graph answer entity renumber, all entity nodes start by 0
-def process_graph_answer(mode, input_dir):
-    filePath = os.path.join(input_dir, mode + '.json')
-    with open(filePath) as f:
-        ind = 0 
-        graphId = 0
-        answerGraphToIdNumber = dict()
-        for line in f.readlines():            
-            line = json.loads(line)
-            nodeIdNameDict = dict()  
-            answer_ids = line['answer_ids']
-            # answers = line['answers']
-            # answer_ids = []
-            g_node_names = line['inGraph']['g_node_names'] 
-            # for ans in answers:
-            #     for k, v in g_node_names.items():
-            #         if v == ans:
-            #             answer_ids.append(k)
-            #             break
-            for key, value in g_node_names.items(): #nodeIdNameDict save node_name and its id_value                
-                nodeIdNameDict[key] = ind                    
-                ind += 1
-            if len(answer_ids) == 0:
-                answerGraphToIdNumber[graphId] = []
-                answerGraphToIdNumber[graphId].append(ind)
-            else:
-                for answer_id in answer_ids:
-                    if graphId in list(answerGraphToIdNumber.keys()):
-                        answerGraphToIdNumber[graphId].append(nodeIdNameDict[answer_id])
-                    else:   
-                        answerGraphToIdNumber[graphId] = []
-                        answerGraphToIdNumber[graphId].append(nodeIdNameDict[answer_id])
-            graphId +=1
-
-    nodeFileName = './wholeGraphData/WQTestGraph_ToAnswerId.txt'
-    with open(nodeFileName, 'w') as file:
-        file.write(json.dumps(answerGraphToIdNumber))   
-    print("len:", len(answerGraphToIdNumber))    
-
 # generate each subgraph nodeID set
 def process_graph_subNode(mode, input_dir):
     filePath = os.path.join(input_dir, mode + '.json')    
