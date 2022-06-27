@@ -7,7 +7,7 @@ from sklearn import metrics
 import random
 
 from util import load_data
-from  import GCL
+from rgcn_gcl import RGCN_GCL
 import sys
 import os
 import pickle
@@ -68,7 +68,7 @@ def main():
     # the shuffled features are used to contruct the negative samples
     idx = np.random.permutation(nb_nodes)
     shuf_feats = feats[idx, :]   
-    model = GCL(args.num_layers, args.num_mlp_layers, input_dim, args.hidden_dim, args.neighbor_pooling_type, device).to(device)   
+    model = RGCN_GCL(args.num_layers, args.num_mlp_layers, input_dim, args.hidden_dim, args.neighbor_pooling_type, device).to(device)   
     optimizer_train = optim.Adam(model.parameters(), lr=args.lr)  
 
     batch_size = 1
