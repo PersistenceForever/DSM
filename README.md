@@ -17,13 +17,16 @@ $ pip install -r requirements.txt
 * WQ : `dataset/` contains the files for WQ dataset. 
 * PQ : `dataset/` contains the files for WQ dataset. 
 
-## How to run
-(1) process dataset Create a folder to store results.
+## How to run 
+(1) Prepare dataset for training GCL retriever.
 ```
-$ mkdir output_WQ
+$ python retriever/preprocess_retriever.py
 ```
-
-(2) To run the example, execute:
+(2) Train the GCL retriever.
+```
+$ python main_gcl.py
+```
+(3) To run the example, execute:
 ```
 $ python bart_train.py --epoch 30 --input_dir dataset/WQ --output_dir './output_WQ' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path 'facebook/bart-base'
 ```
