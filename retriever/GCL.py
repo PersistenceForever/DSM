@@ -3,7 +3,7 @@ import torch.nn as nn
 class ContrastiveLoss(nn.Module):
     def __init__(self, device, temperature=0.07, contrast_mode='all',
                  base_temperature=0.07):
-        super(SupConLoss, self).__init__()
+        super(ContrastiveLoss, self).__init__()
         self.temperature = temperature
         self.contrast_mode = contrast_mode
         self.base_temperature = base_temperature
