@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 from layers import GraphCNN, AvgReadout, Discriminator
 import sys
-sys.path.append("models/")
 
 class DGI(nn.Module):
     def __init__(self, num_layers, num_mlp_layers, input_dim, hidden_dim, neighbor_pooling_type, device):
