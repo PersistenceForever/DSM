@@ -27,11 +27,11 @@ $ python retriever/preprocess_retriever.py
 ``
  $ python retriever/relation_path.py
 ``
-2. Train the GCL-based retriever to create learning tasks.
-* Run GCL-based retriever: 
-``
+2. Train the GCL-based retriever.
+```
  $ python retriever/main_gcl.py
-``
+```
+Specifically, other retrievers run as follows:
 * Run DGI-based retriever: 
 ``
  $ python retriever/main_dgi.py
