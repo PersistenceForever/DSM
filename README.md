@@ -22,7 +22,7 @@ $ pip install -r requirements.txt
 ```
 $ python retriever/preprocess_retriever.py
 ```
-2. Train the retriever to create learning tasks.
+2. Train the GCL-based retriever to create learning tasks.
 * Run GCL-based retriever: 
 ``
  $ python retriever/main_gcl.py
