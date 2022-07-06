@@ -18,10 +18,15 @@ $ pip install -r requirements.txt
 * PQ : `dataset/` contains the files for PQ dataset. 
 
 ## How to run 
-1. Prepare dataset for training retriever.
-```
+1. Prepare dataset and positive samples for training retriever.
+* Prepare dataset: 
+``
 $ python retriever/preprocess_retriever.py
-```
+``
+* Generate positive samples: 
+``
+ $ python retriever/relation_path.py
+``
 2. Train the GCL-based retriever to create learning tasks.
 * Run GCL-based retriever: 
 ``
