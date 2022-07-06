@@ -19,11 +19,11 @@ $ pip install -r requirements.txt
 
 ## How to run 
 1. Prepare dataset and positive samples for training retriever.
-* Prepare dataset: 
+* Prepare dataset for retriever: 
 ``
 $ python retriever/preprocess_retriever.py
 ``
-* Generate positive samples: 
+* Generate positive samples for retriever: 
 ``
  $ python retriever/relation_path.py
 ``
@@ -31,7 +31,7 @@ $ python retriever/preprocess_retriever.py
 ```
  $ python retriever/main_gcl.py
 ```
-Specifically, other retrievers run as follows:
+  Specifically, other retrievers run as follows:
 * Run DGI-based retriever: 
 ``
  $ python retriever/main_dgi.py
@@ -48,10 +48,15 @@ $ python retriever/main_ged.py
 ``
  $ python retriever/relation_path.py
 ``
-3. Prepare dataset for DSM.
-```
-$ python preprocess.py -input_dir dataset/WQ --output_dir './output_WQ' --model_name_or_path 'facebook/bart-base'
-```
+3. Prepare dataset and create learning tasks for DSM.
+* Prepare dataset for DSM:   
+
+  ``
+  $ python preprocess.py -input_dir dataset/WQ --output_dir './output_WQ' --model_name_or_path 'facebook/bart-base'
+  ``
+* Create learning tasks for DSM:  
+
+  ``dataset.py`` is used to process dataset to create learning tasks.
 4. To run the DSM, execute (Note: we take the GCL-based retriever as an example, and other retrievers are similar.):
 ```
 $ python bart_train.py --epoch 30 --input_dir dataset/WQ --output_dir './output_WQ' --update_lr 5e-5 --meta_lr 3e-5 --model_name_or_path 'facebook/bart-base'
