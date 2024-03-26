@@ -1,5 +1,5 @@
 # DSM
-The pytorch implementation of Question Generation over Knowledge Base via Modeling Diverse Subgraphs with Meta-learner.
+The pytorch implementation of Question Generation over Knowledge Base via Modeling Diverse Subgraphs with Meta-learner (EMNLP 2022).
 
 ## Requirements
 1. Environments
